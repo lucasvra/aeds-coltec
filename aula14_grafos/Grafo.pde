@@ -122,38 +122,33 @@ class Grafo {
   }
   
   void dijkstra(int origem, int destino){
-    int[] dist = new int[numVertices];
-    int[] anterior = new int[numVertices];
-    for(int v = 0; v < numVertices; v++){
-      dist[v] = 1000000;
-      anterior[v] = -1;
-    }
-    
-    dist[origem] = 0;
-    int[] Q = new int[numVertices];
-    for(int k = 0; k < numVertices; k++){
-      int u = -1;
-      int udist = 10000000;
-      for(int v = 0; v < numVertices; v++){
-        if(Q[v] == 0 && dist[v] < udist){
-          u = v;
-          udist = dist[v];
-        }
-      }
-        
-      Q[u] = 1;
-        
-      for(int v = 0; v < numVertices; v++){
-          if(u == v || matrizAdj[u][v] == 0) continue;
-           
-            int alt = udist + matrizAdj[u][v];
-            
-            if(alt < dist[v]){
-              dist[v] = alt;
-              anterior[v] = u;
-            }
-        }  
-    }
+    /*
+      Dijkstra(Grafo G, vértice origem):
+          para cada vértice v em G:
+              dist[v] ← ∞
+              anterior[v] ← indefinido
+          fim para
+      
+          dist[origem] ← 0
+      
+          Q ← conjunto de todos os vértices de G
+      
+          enquanto Q não está vazio:
+              u ← vértice em Q com menor dist[u]
+              remova u de Q
+      
+              para cada vizinho v de u:
+                  alt ← dist[u] + dist_entre(u, v)
+      
+                  se alt < dist[v]:
+                      dist[v] ← alt
+                      anterior[v] ← u
+                  fim se
+              fim para
+          fim enquanto
+      
+          retorne anterior
+    */
     
     return;
   }
